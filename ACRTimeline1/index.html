@@ -1,0 +1,1314 @@
+<!-- ACR-Timeline-Infograph 
+saiy2k (http://saiy2k.blogspot.in)
+
+This file is part of ACR-Timeline-Infograph project (https://github.com/GethuGames/ACR-Timeline-Infograph).
+
+ACR-Timeline-Infograph is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ACR-Timeline-Infograph is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE HTML>
+<html>
+       
+    <head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <!--<script src="jquery.js"></script>-->
+        <script src="jquery.imagemapster.min.js"></script>
+
+        <style>
+
+            a {
+                color: #fff;
+            }
+
+            #legendBar {
+                width: 20%;
+                height: 20px;
+                position: fixed;
+                right: 2%;
+                top: 2%;
+                background: rgba(0, 0, 0, 0.9);
+                color: #fff;
+                padding: 4px;
+                text-align: center;
+                font-family: arial;
+                font-size: 12px;
+                display: inline;
+                overflow: hidden;
+            }
+
+            #legendTitle {
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+
+            #notificationBar {
+                width: 96%;
+                height: 3em;
+                position: fixed;
+                left: 2%;
+                right: 2%;
+                bottom: 2%;
+                background: rgba(0, 0, 0, 0.75);
+                color: #ddd;
+                padding: 4px;
+                text-align: center;
+                font-family: arial;
+                cursor: pointer;
+                display: inline;
+            }
+
+            #notificationArea {
+                float: left;
+                width: 92%;
+            }
+
+            #leftArrowButton {
+                float:left;
+                width:4%;
+                height: 3em;
+            }
+
+            #leftArrowButton:hover {
+                background: rgba(50, 0, 0, 0.9);
+            }
+
+            #rightArrowButton {
+                float:right;
+                width:4%;
+                height: 3em;
+            }
+
+            #rightArrowButton:hover {
+                background: rgba(50, 0, 0, 0.9);
+            }
+
+            #zoomInButton {
+                width: 48px;
+                height: 48;
+                position: fixed;
+                left: 10px;
+                top:10px;
+                background-image: url(zoomIn.png);
+            }
+
+            #zoomOutButton {
+                width: 48px;
+                height: 48;
+                position: fixed;
+                left: 10px;
+                top:50px;
+                background-image: url(zoomOut.png);
+            }
+
+            .redHighlight {
+                color: #aa0000;
+            }
+
+            .positiveColor {
+                color: #0000dd;
+            }
+
+            #imgMap {
+                width: 100%;
+                height: 100%;
+                min-width: 1600px;
+                min-height: 1600px;
+            }
+
+        </style>
+        </head>
+        <body>
+        <img src="selected.jpg" id="selMap" style="display:none">
+        <img src="normal.jpg" usemap="#acrmap" id="imgMap">
+        <map id="acrmap" name="acrmap">
+
+            <!-- Corporation of Chennai -->
+            <area shape="rect" data-key="CoC1" coords="998,800,1056,837" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC1a" coords="860,514,916,550" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC1b" coords="558,800,616,836" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC1c" coords="808,1010,866,1046" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC2" coords="860,458,918,494" href="https://drive.google.com/file/d/0BzT8m6ELWmHhOUpkX09rZHZaVnM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC3" coords="809,1090,866,1125" href="https://drive.google.com/file/d/0BzT8m6ELWmHhd20zcEhNQjB4QWM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC4" coords="1127,734,1184,769" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMXpFSlR2OGpzb2c/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC5" coords="374,640,432,676" href="https://drive.google.com/file/d/0BzT8m6ELWmHhTXhTWnMtUF9sYmM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC6" coords="1238,736,1307,779" href="https://drive.google.com/file/d/0BzT8m6ELWmHhU2FINl83bGgwWkk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC7" coords="1238,796,1307,839" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNDBNRGs2X0t4QWc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CoC8" coords="1243,678,1301,714" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRjJVVGtnUWtVSEk/edit?usp=sharing" target="_blank" />
+
+            <!-- MAWS -->
+            <area shape="rect" data-key="MAWS1" coords="924,570,984,607" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS2" coords="1088,567,1157,609" href="https://drive.google.com/file/d/0BzT8m6ELWmHhQzlqNU5RSjVPU1U/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS3" coords="1062,362,1180,422" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcHk4RHhwR3BXWjg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS4" coords="1350,369,1419,412" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdGRwVm5fWGNWajg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS5" coords="1421,454,1534,508" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMTF3TnBINVp1WGs/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS1a" coords="998,734,1055,768" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS6" coords="1292,285,1405,341" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRDkzYV9GSkxULTg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS7" coords="1320,184,1375,219" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMzd3YVljVjFHQnc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS8" coords="1256,183,1311,218" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMl9nb1lCRjF6NVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS9" coords="1385,184,1438,218" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNFkzeE5IbmdqZzg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS10" coords="1290,147,1342,181" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNWI5NzcwbENTaUE/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS11" coords="1324,78,1436,143" href="https://drive.google.com/file/d/0B76vDSSLMZVubU1seHd5VGhONHc/edit?usp=sharing" target="_blank" />
+
+            <!-- TNPCB -->
+            <area shape="rect" data-key="TNPCB1" coords="711,574,768,610" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcFpEVU5DOGV6MzA/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB2" coords="682,455,797,515" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZTktcEJ4MmZkeVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB3" coords="828,418,887,452" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRzNGSHZXdFRRd0E/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB4" coords="799,305,916,364" href="https://drive.google.com/file/d/0BzT8m6ELWmHhVUtGOWRMVlByQk0/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB5" coords="653,327,711,362" href="https://drive.google.com/file/d/0BzT8m6ELWmHhM0M5emhjSUtSZGc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB6" coords="829,261,886,297" href="https://drive.google.com/file/d/0BzT8m6ELWmHhSl9kWk5KWXEtYW8/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB7" coords="988,194,1045,228" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdXc1eUUwMjlPUXc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB8" coords="878,193,935,228" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUDBwMG45eldmczg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB9" coords="879,135,936,169" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNWcwNUEzVGpXdnM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB10" coords="988,134,1046,170" href="https://drive.google.com/file/d/0BzT8m6ELWmHhYTdIX195Q0w2bzg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB11" coords="745,194,801,228" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNS1Ocjh3VHBZcFE/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB12" coords="746,96,802,131" href="https://drive.google.com/file/d/0BzT8m6ELWmHhSHdGd2xTa3dOdGc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB13" coords="659,56,727,98" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdkQtaGV4RTVBdzQ/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB14" coords="513,47,629,105" href="https://drive.google.com/file/d/0BzT8m6ELWmHhTllVcHdvNFlNSGs/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB15" coords="810,77,866,111" href="https://drive.google.com/file/d/0B76vDSSLMZVuWVpVbk5pQjlfNXM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB16" coords="811,35,867,69" href="https://drive.google.com/file/d/0BzT8m6ELWmHheEZMbE82bkhiRFU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB12a" coords="45,511,103,547" href="https://drive.google.com/file/d/0BzT8m6ELWmHhSHdGd2xTa3dOdGc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB12b" coords="499,1522,563,1560" href="https://drive.google.com/file/d/0BzT8m6ELWmHhSHdGd2xTa3dOdGc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB7a" coords="1344,1046,1402,1082" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdXc1eUUwMjlPUXc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="TNPCB5a" coords="1052,1262,1110,1298" href="https://drive.google.com/file/d/0BzT8m6ELWmHhM0M5emhjSUtSZGc/edit?usp=sharing" target="_blank" />
+
+            <!-- CPCB -->
+            <area shape="rect" data-key="CPCB1" coords="570,502,629,538" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZlR2S2NrbkpyNGc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB1a" coords="657,410,713,446" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZlR2S2NrbkpyNGc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB2" coords="485,318,542,355" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZ3djWkVseTdzQ28/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB3" coords="486,193,544,229" href="https://drive.google.com/file/d/0BzT8m6ELWmHhN19ERDdKQTZlLVk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB3a" coords="624,194,679,227" href="https://drive.google.com/file/d/0BzT8m6ELWmHhN19ERDdKQTZlLVk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB4" coords="425,283,484,318" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRklPZUQ3VjJtc0E/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB4a" coords="556,193,612,227" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRklPZUQ3VjJtc0E/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB5" coords="623,135,679,170" href="https://drive.google.com/file/d/0BzT8m6ELWmHhODZoMGRGOS1Sclk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB6" coords="427,192,484,229" href="https://drive.google.com/file/d/0BzT8m6ELWmHhSWxnVmZzS1ZXU1E/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CPCB6a" coords="555,133,611,169" href="https://drive.google.com/file/d/0BzT8m6ELWmHhSWxnVmZzS1ZXU1E/edit?usp=sharing" target="_blank" />
+
+            <!-- CMWSSB -->
+            <area shape="rect" data-key="CMWSSB1" coords="620,783,678,817" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMk91dVpBeFNWQ1U/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB2" coords="545,765,599,798" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRnRNaUpZLVhIejQ/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB3" coords="515,831,569,864" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUHdMakVQbDE4ZEE/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB4" coords="438,781,505,822" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNmVlZWEtNFBnNmM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB5" coords="375,759,432,793" href="https://drive.google.com/file/d/0BzT8m6ELWmHhamxFWHVhZHlJaEU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB6" coords="437,726,502,767" href="https://drive.google.com/file/d/0BzT8m6ELWmHhOTcyS2JjU0xaNTg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB7" coords="437,685,502,725" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNVp5dWo3Z3FmRnM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB8" coords="372,686,435,726" href="https://drive.google.com/file/d/0BzT8m6ELWmHheWhNM1pDbllTZlE/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB9" coords="370,826,436,868" href="https://drive.google.com/file/d/0BzT8m6ELWmHhSjA3N2hpTktxNmM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB10" coords="438,879,504,919" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdzFrcWVReU1ha3c/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB11" coords="376,883,431,918" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdUtlc1g3NmxadUk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB12" coords="290,880,355,919" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRlFlbFZfU2tJck0/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB13" coords="265,668,322,702" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdEFIV1dLWmVLOFk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB14" coords="298,930,354,966" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRjVzWUpobnM0d3M/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB15" coords="226,931,281,966" href="https://drive.google.com/file/d/0BzT8m6ELWmHhV0g1M2xUaVJYcU0/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB16" coords="619,1284,674,1319" href="https://drive.google.com/file/d/0BzT8m6ELWmHhVllkeUtrbnBWN2c/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB17" coords="868,1278,923,1312" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdjRQa29EVVhFM2s/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB18" coords="298,812,354,847" href="https://drive.google.com/file/d/0BzT8m6ELWmHhU21QbDNZckxtSEk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB19" coords="267,710,322,746" href="https://drive.google.com/file/d/0BzT8m6ELWmHhM3R5c2ZxMm0wSEk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB20" coords="225,883,280,917" href="https://drive.google.com/file/d/0BzT8m6ELWmHhWHJmV1BHQ0VjbWM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB21" coords="226,812,281,848" href="https://drive.google.com/file/d/0BzT8m6ELWmHhVElva2NIZFlBZVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB22" coords="44,677,100,712" href="https://drive.google.com/file/d/0B76vDSSLMZVudHFSLUUyX25tajA/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB1a" coords="607,735,661,768" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMk91dVpBeFNWQ1U/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB1b" coords="607,835,660,869" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMk91dVpBeFNWQ1U/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="CMWSSB14a" coords="619,1236,675,1270" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRjVzWUpobnM0d3M/edit?usp=sharing" target="_blank" />
+
+            <!-- HAFW -->
+            <area shape="rect" data-key="HAFW1" coords="467,925,523,958" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcnhRaDJKLU9iU28/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW1a" coords="1046,1082,1104,1117" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcnhRaDJKLU9iU28/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW1b" coords="671,1091,726,1124" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcnhRaDJKLU9iU28/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW1c" coords="467,973,523,1008" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcnhRaDJKLU9iU28/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW2" coords="571,1038,637,1078" href="https://drive.google.com/file/d/0BzT8m6ELWmHhX292d3ZCc0x3eG8/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW3" coords="670,1151,725,1186" href="https://drive.google.com/file/d/0BzT8m6ELWmHhQjNHVklyN3BnQ0E/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW4" coords="467,1021,524,1058" href="https://drive.google.com/file/d/0BzT8m6ELWmHhTUt2bDJ2LTlIZzQ/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW4a" coords="1127,856,1185,892" href="https://drive.google.com/file/d/0BzT8m6ELWmHhTUt2bDJ2LTlIZzQ/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW5" coords="369,1068,425,1106" href="https://drive.google.com/file/d/0BzT8m6ELWmHhR1NoXzRaM1FtemM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW5a" coords="1047,1190,1106,1226" href="https://drive.google.com/file/d/0BzT8m6ELWmHhR1NoXzRaM1FtemM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW5b" coords="576,1325,634,1358" href="https://drive.google.com/file/d/0BzT8m6ELWmHhR1NoXzRaM1FtemM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW5c" coords="369,1124,427,1161" href="https://drive.google.com/file/d/0BzT8m6ELWmHhR1NoXzRaM1FtemM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW6" coords="370,1220,425,1257" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZkx6VU1na1Bjbkk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW6a" coords="1397,857,1455,893" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZkx6VU1na1Bjbkk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="HAFW7" coords="282,1318,342,1354" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZkx6VU1na1Bjbkk/edit?usp=sharing" target="_blank" />
+
+            <!-- PWD -->
+            <area shape="rect" data-key="PWD1" coords="802,920,860,954" href="https://drive.google.com/file/d/0BzT8m6ELWmHhYlRJM2NJcEhpc2s/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD2" coords="735,919,792,953" href="https://drive.google.com/file/d/0BzT8m6ELWmHhTE9zT2lNNUNhYlk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD3" coords="736,1010,792,1045" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZWUtcmJWYk81dnc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD4" coords="735,1092,792,1125" href="https://drive.google.com/file/d/0BzT8m6ELWmHhVTcwRldpYWY3UmM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD5" coords="737,1150,795,1185" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcTNueS1oclowX2M/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD6" coords="799,1233,864,1273" href="https://drive.google.com/file/d/0BzT8m6ELWmHhaWhweXQ4dlM3X2s/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD7" coords="868,1232,922,1264" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMjVmZHFqeXhjc0k/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD8" coords="738,1235,793,1271" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZ3dQVXZfOXFVNkE/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD9" coords="677,1235,734,1271" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUmk0LXpnTUM1aG8/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD10" coords="773,1324,828,1358" href="https://drive.google.com/file/d/0BzT8m6ELWmHhQms2UVpOUnZTbHM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD11" coords="738,1277,794,1312" href="https://drive.google.com/file/d/0BzT8m6ELWmHhQms2UVpOUnZTbHM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD12" coords="646,1326,700,1360" href="https://drive.google.com/file/d/0BzT8m6ELWmHhb1RuOHV6b3BBMWM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD13" coords="830,1324,887,1357" href="https://drive.google.com/file/d/0BzT8m6ELWmHheC1aZ1RDUHhzQjg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD14" coords="708,1326,764,1359" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNklZcUxtSjJFUjg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD15" coords="924,1371,981,1404" href="https://drive.google.com/file/d/0BzT8m6ELWmHhM2FpaW9pZW5oR2s/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD16" coords="584,1372,641,1407" href="https://drive.google.com/file/d/0BzT8m6ELWmHhb2ZISjNyQmRycnM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD17" coords="959,1431,1016,1466" href="https://drive.google.com/file/d/0BzT8m6ELWmHhOUdGZDZKU1NrSW8/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD18" coords="895,1431,950,1466" href="https://drive.google.com/file/d/0BzT8m6ELWmHhb1BCQ0w5XzZFVHM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD19" coords="585,1475,641,1510" href="https://drive.google.com/file/d/0BzT8m6ELWmHhLVFMWkhfWWVTZzA/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD20" coords="831,1475,887,1509" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMUtpYXN3WjRLdXc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD21" coords="734,1476,790,1511" href="https://drive.google.com/file/d/0BzT8m6ELWmHhTi1uQUhZUW9tbjg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="PWD22" coords="832,1522,886,1556" href="https://drive.google.com/file/d/0B76vDSSLMZVuWVc5eHhqbUdaSGs/edit?usp=sharing" target="_blank" />
+
+            <!-- E & F -->
+            <area shape="rect" data-key="EAF1" coords="875,887,933,923" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZGIxTzRpYzJoZU0/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF2" coords="960,919,1018,956" href="https://drive.google.com/file/d/0BzT8m6ELWmHhbHloMkcyQVlhMDQ/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF3" coords="770,525,827,562" href="https://drive.google.com/file/d/0BzT8m6ELWmHhandRcUdPczdUM1E/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF4" coords="1045,1041,1102,1077" href="https://drive.google.com/file/d/0BzT8m6ELWmHhemM4SW95RktQSlE/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF5" coords="920,1078,978,1112" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdVVvMjhWWXVDMXc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF6" coords="1154,1039,1223,1079" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUnF5NFVsbVJEZUU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF7" coords="924,1278,981,1312" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZTRIVHYxWHV6ZmM/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF8" coords="1159,1161,1215,1196" href="https://drive.google.com/file/d/0BzT8m6ELWmHhbjdyRG41d09wMHc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF9" coords="1160,1097,1217,1132" href="https://drive.google.com/file/d/0BzT8m6ELWmHheHp4V1YyTGR1MFU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF1a" coords="771,575,826,610" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZGIxTzRpYzJoZU0/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF2a" coords="832,575,886,609" href="https://drive.google.com/file/d/0BzT8m6ELWmHhbHloMkcyQVlhMDQ/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF5a" coords="925,1186,980,1221" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdVVvMjhWWXVDMXc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="EAF8a" coords="1245,856,1301,890" href="https://drive.google.com/file/d/0BzT8m6ELWmHhbjdyRG41d09wMHc/edit?usp=sharing" target="_blank" />
+
+            <area shape="rect" data-key="Complaint" coords="740,769,850,829" href="https://drive.google.com/file/d/0BzT8m6ELWmHhd3V6LWNtaG5RNGs/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="RTI1" coords="769,689,824,707" href="https://drive.google.com/file/d/0BzT8m6ELWmHhbGVCNHRHaFJHY2c/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="RTI2" coords="852,709,884,745" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZlJlUGFzNHJ2Zms/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="RTI3" coords="886,775,909,813" href="https://drive.google.com/file/d/0BzT8m6ELWmHhWk1qNl9RNXdvVTA/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="RTI4" coords="853,852,881,884" href="https://drive.google.com/file/d/0BzT8m6ELWmHhQng2ODFQVUVzcjQ/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="RTI5" coords="773,880,821,911" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZlAzTEw5MmU2WEk/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="RTI6" coords="710,841,749,889" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdWliTl9nNlNfYlE/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="RTI7" coords="691,757,713,833" href="https://drive.google.com/file/d/0BzT8m6ELWmHheXphWGR5YkVhSWc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="RTI8" coords="714,709,746,747" href="https://drive.google.com/file/d/0BzT8m6ELWmHhZ3djWkVseTdzQ28/edit?usp=sharing" target="_blank" />
+
+        </map> 
+
+        <!--
+        <div id="zoomInButton"></div>
+        <div id="zoomOutButton"></div>
+        -->
+
+        <div id="notificationBar"> 
+            <div id="leftArrowButton"> <br/> &lt;&lt; </div>
+            <div id="notificationArea"> This Software is released under <a href="http://grayfaceofindia.in/modules/LICENSE.txt">GNU GPL v3 License</a>. Source of this project shall be found @ <a href="https://github.com/GethuGames/ACR-Timeline-Infograph" target="_blank">GITHUB</a> </div>
+            <div id="rightArrowButton"> <br/> &gt;&gt; </div>
+        </div>
+
+        <div id="legendBar">
+            <div id="legendTitle"> SHOW TIPS </div>
+            <div id="legendContent" style="text-align:left">
+                <br/>
+                <input type="CHECKBOX" id="fullScreenButton" value="off">
+                <label for="fullScreenButton">Full Screen</label>
+                <br/>
+                <p>
+                    <b style="font-size:14px; color: #f88">How to Read this Graph?</b> <br/> <br/>
+                    * The number <b>MM-DD</b> in the boxes represents the date of the letter as Month-Date<br/>
+                    * Each Pie represents a Department<br/>
+                    * Each dotted Octagon represents a month, the inner one starting from February<br/>
+                    * Mouse over the boxes to see more detail on the letter<br/>
+                    * Click on the boxes to open the letter itself<br/><br/>
+                    <b style="color:#88f">Blue Box</b> - a letter from GFoI to concerned department<br/>
+                    <b style="color:#8f8">Green Box</b> - a reply from concerned government department<br/>
+                    <b style="color:#ddd">Gray Box</b> - officials forwarding the letter between various departments
+                    <hr>
+                    <span style="color: #aaa">This Software is released under <a href="http://grayfaceofindia.in/modules/LICENSE.txt">GNU GPL v3 License</a>. Source of this project shall be found @ <a href="https://github.com/GethuGames/ACR-Timeline-Infograph" target="_blank">GITHUB</a></span>
+                </p>
+            </div>
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <script>
+
+var timerID;
+
+var resourceCount = 0;
+
+var currentViolation = {};
+
+var rawData = [ { // 0 CoC
+        "key": "CoC1",
+        "date": "February 20th, 2013",
+        "from": "Deputy Collector, CoC",
+        "to": "PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC, Electrical Department, CoC",
+        "description": "Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI with the intimation to the Application. But here around 18 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3)</b>"
+    }, { // 1
+        "key": "CoC2",
+        "date": "March 04th, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "Forwarded within TNPCB for RTI received through CoC",
+        "violation": ""
+    }, { // 2
+        "key": "CoC3",
+        "date": "March 08th, 2013",
+        "from": "Thiru. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
+        "to": "PIO, Deputy Superintending Engineer, WRD, Palar Basin Circle",
+        "description": "Forwarded within TNPCB for RTI received through CoC",
+        "violation": ""
+    }, { // 3
+        "key": "CoC4",
+        "date": "Marth 12, 2013",
+        "from": "PIO, Superintending Engineer, SWD, CoC",
+        "to": "S Alexraj",
+        "description": "Biometric survey in process. Once done, eviction of encroachments will be taken up",
+        "violation": "There was no trace of how our RTI reached this PIO. Some other PIO messed up with the RTI transfer by not intimating us about the transfer"
+    }, { // 4
+        "key": "CoC5",
+        "date": "March 23rd, 2013",
+        "from": "PIO, Superintending Engineer (C) V, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Sewage discharged into ACR after treatment as per Pollution Control Board norms.",
+        "violation": "<b>Untreated sewage not let into Adyar and Cooum Rivers, which is ONE BIG LIE</b>"
+    }, { // 5
+        "key": "CoC6",
+        "date": "April 4, 2013",
+        "from": "S Alexraj",
+        "to": "City Health Officer, First Appellate Authority, CoC",
+        "description": "on PIO, Public Health Department, Corporation of Chennai",
+        "violation": "No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
+    }, { // 6
+        "key": "CoC7",
+        "date": "April 4, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer (Building and Bridges), First Appellate Authoriy, CoC",
+        "description": "on SE (Electrical), Corporation of Chennai",
+        "violation": "No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
+    }, { // 7
+        "key": "CoC8",
+        "date": "April 15, 2013",
+        "from": "PIO, Addl City Health Officer, CoC",
+        "to": "S Alexraj",
+        "description": " * 6 Catamarans to spray mosquito larvicide oil after removing Hyacinth plants <br/> * Fogging operations done to reduce mosquito population <br/> * 1941 mosquito complaints received in 2012-2013 <br/> * Separate team at zonal level to attend mosquito complaints",
+        "violation": ""
+
+    }, { // 8 MAWS
+        "key": "MAWS1",
+        "date": "February 22, 2013",
+        "from": "Mr. <b class='redHighlight'>S. Abraham,</b> MA, BABL, PIO, Under Secretary",
+        "to": "PIO, CoC",
+        "description": "The Under Secretary simply transferred the RTI to Corporation of Chennai, without giving information specific to MAWS.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 20 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
+    }, { // 9
+        "key": "MAWS2",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Deputy Secretary, FAA",
+        "description": "on Mr. S. Abraham, MA, BABL, PIO Under Secretary, <b>for escaping from the responsibility of answering</b>, by transferring the RTI to Corporation of Chennai after 20 days of application of RTI",
+        "violation": ""
+    }, { // 10
+        "key": "MAWS3",
+        "date": "April 30, 2013",
+        "from": "Thiru <b class='redHighlight'> S S Ranganathan, </b> MA, Deputy Secretary, FAA",
+        "to": "S Alexraj",
+        "description": " * unclear statements <br/> * passing responsibility to CRRT, CMWSSB, TNSC and CoC <br/> * letting only treated water into rivers, which is far from REALITY <br/> * SUFFICIENT AMOUNT is allocated - <b>Crap answer</b> <br/>",
+        "violation": "<span class=’redHighlight’>Even an elementary kid will tell how much he / she have spent on buying a candy or something. We seriously wonder how come this people were given the designation of Deputy Secretary.</span>"
+    }, { // 11
+        "key": "MAWS4",
+        "date": "June 26, 2013",
+        "from": "S Alexraj",
+        "to": "<b class='redHighlight'>Tamil Nadu Information Commission</b>",
+        "description": "Appeal to Information Commission for unclear, kiddish answers by First Appellate Authority",
+        "violation": ""
+    }, { // 12
+        "key": "MAWS5",
+        "date": "July 18, 2013",
+        "from": "Thiru <b class='redHighlight'>S S Ranganathan, </b> MA, Deputy Secretary, FAA",
+        "to": "CRRT and CMWSSB",
+        "description": "Another <b class=’redHighlight’>funny and kiddish move by Thiru S S Ranganathan.</b>He now transfers the RTI to CRRT and CMWSSB, for what? Only god knows. There are no provisions in RTI Act to transfer a RTI after Second Appeal, but only our administrators will do such a hilarious thing in an attempt to escape.",
+        "violation": ""
+
+    }, { // 13 TNPCB
+        "key": "TNPCB1",
+        "date": "February 06, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "Forwarded the RTI to his subordinate within right time frame of 5 days as prescribed in Section 6(3). <b class=’positiveColor’>Dr. K. Karthikeyan is the one follows the RTI act more or less good </b>",
+        "violation": ""
+    }, { // 14
+        "key": "TNPCB2",
+        "date": "March 04, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": " * PWD responsible for maintenance and monitoring of Adyar and Cooum rivers. <br/> * enforces Water (P&CP) Act, 1974 amended in 1988. <br/> * TNPCB ensures no industrial outfalls <br/> * Local bodies to take care of residential and commercial outfalls <br/> * <b class=’positiveColor’>3 months report (October, November, December)</b> <br/> * No complaints received on pollution in Adyar and Cooum rivers <br/>",
+        "violation": ""
+    }, { // 15
+        "key": "TNPCB3",
+        "date": "March 15, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "RTI received through E & F forwarded to District Environmental Engineer",
+        "violation": ""
+    }, { // 16
+        "key": "TNPCB4",
+        "date": "April 08, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": " * Tolerance Limits for Effluents </br> * Standards for Discharge of Trade Effluent",
+        "violation": ""
+    }, { // 17
+        "key": "TNPCB5",
+        "date": "April 23, 2013",
+        "from": "Dr. S Balaji, Member Secretary, FAA, TNPCB",
+        "to": "Directorate of Environment, Panagal building",
+        "description": "Appeal transfered to E & F for an Appeal dated 2013-02-12, but no Appeal was made on the date. Its clearly <b class=’redHighlight’>a false information being circulated.</b>",
+        "violation": ""
+    }, { // 18
+        "key": "TNPCB6",
+        "date": "April 23, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": "* PWD responsible for maintenance and monitoring of Adyar and Cooum rivers. <br/> * can issue Direction to CoC and CMWSSB under Section 33A of  Water (P&CP) Act, 1974 amended in 1988.",
+        "violation": "Couldn’t trace the path taken by this RTI."
+    }, { // 19
+        "key": "TNPCB7",
+        "date": "May 06, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, Under Secretary, E & F",
+        "description": "Intimating E & F that Information is already given to Appellant",
+        "violation": ""
+    }, { // 20
+        "key": "TNPCB8",
+        "date": "May 10, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "RTI received through CMWSSB <b class=’redHighlight’>on an unknown date.</b> forwarded to District Environmental Engineer",
+        "violation": ""
+    }, { // 21
+        "key": "TNPCB9",
+        "date": "May 20, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "S Alexraj",
+        "description": "CMWSSB has to take action against those who illegally drain untreated sewage water to abate pollution to water bodies",
+        "violation": ""
+    }, { // 22
+        "key": "TNPCB10",
+        "date": "May 21, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": "PWD is responsible for maintenance and monitoring of rivers. Reply (for RTI forwarded on 2013-05-10) <b class=’positiveColor’> given within prescribed time </b>",
+        "violation": ""
+    }, { // 22
+        "key": "TNPCB11",
+        "date": "May 27, 2013",
+        "from": "Tmt G Manjula, PIO, Deputy Director, Directorate of Environment, Panagal building",
+        "to": "PIO, TNPCB",
+        "description": "No information available with E & F for the Appeal forwarded on 2013-04-23",
+        "violation": ""
+    }, { // 23
+        "key": "TNPCB12",
+        "date": "June 18, 2013",
+        "from": "Dr. S Balaji, Member Secretary, FAA, TNPCB",
+        "to": "PWD, CMWSSB",
+        "description": "Since Directorate of Environment (11) had no information, the same RTI is forwarded to PWD, CMWSSB",
+        "violation": "<b class=’redHighlight’>Dr. S Balaji is playing Ping Pong game here. He first send the Appeal to E & F, then returned it; now he tries the same with PWD and CMWSSB. </b>"
+    }, { // 24
+        "key": "TNPCB13",
+        "date": "June 25, 2013",
+        "from": "S Alexraj",
+        "to": "FAA, TNPCB",
+        "description": "on PIO, TNPCB for CPCB RTI enquiring the copy of Investigation Status Report, that was transferred to TNPCB",
+        "violation": ""
+    }, { // 25
+        "key": "TNPCB14",
+        "date": "June 30, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": "<b class=’redHighlight’>Instead of providing the actual Investigation report, a f***** story is made up and given to CPCB.</b>",
+        "violation": "And they took 20 extra days to make up this story, violating 7(1) of RTI Act."
+    }, { // 26
+        "key": "TNPCB15",
+        "date": "July 04, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "Appellate Authority, TNPCB",
+        "description": "Information already given in a letter dated 2013-06-30",
+        "violation": ""
+    }, { // 27
+        "key": "TNPCB16",
+        "date": "July 13, 2013",
+        "from": "Dr. H. Malleshappa, IFS, Member Secretary, FAA, TNPCB",
+        "to": "S Alexraj",
+        "description": "Information already given in a letter dated 2013-06-30",
+        "violation": ""
+
+    }, { // 28 CPCB
+        "key": "CPCB1",
+        "date": "March 1, 2013",
+        "from": "CPCB",
+        "to": "Member Secretary, TNPCB",
+        "description": "Complaint forwarded and requested to investigate and submit status report",
+        "violation": ""
+    }, { // 29 
+        "key": "CPCB2",
+        "date": "April 30, 2013",
+        "from": "S Alexraj",
+        "to": "PIO, Director, CPCB",
+        "description": "Enquiring the copy of Investigation status report",
+        "violation": ""
+    }, { // 30 
+        "key": "CPCB3",
+        "date": "May 9, 2013",
+        "from": "CPCB",
+        "to": "TNPCB",
+        "description": "The RTI dated April 30, 2013 is forwarded to TNPCB from CPCB",
+        "violation": ""
+    }, { // 31 
+        "key": "CPCB4",
+        "date": "May 9, 2013",
+        "from": "CPCB",
+        "to": "TNPCB",
+        "description": "Enquiry on status of Investigation status report",
+        "violation": "Its been 2 months since the Complaint was forwarded and TNPCB never responded to the order of CPCB to investigate on Adyar and Cooum river."
+    }, { // 32 
+        "key": "CPCB5",
+        "date": "May 24, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "Transfer of RTI received from CPCB dated May 9, 2013",
+        "violation": ""
+    }, { // 33 
+        "key": "CPCB6",
+        "date": "May 28, 2013",
+        "from": "CPCB",
+        "to": "TNPCB",
+        "description": "Its been 3 months since the Complaint was forwarded and TNPCB still not responded to the order of CPCB to investigate on Adyar and Cooum river. Shame on TNPCB",
+        "violation": ""
+    }, { // 34
+        "key": "CPCB6",
+        "date": "May 28, 2013",
+        "from": "CPCB",
+        "to": "TNPCB",
+        "description": "Its been 3 months since the Complaint was forwarded and TNPCB still not responded to the order of CPCB to investigate on Adyar and Cooum river. Shame on TNPCB",
+        "violation": ""
+
+    }, { // 35 CMWSSB
+        "key": "CMWSSB1",
+        "date": "February 6, 2013",
+        "from": "Staff Manager, CMWSSB",
+        "to": "SE (STP), SE (Coordination)",
+        "description": "",
+        "violation": ""
+    }, { // 36
+        "key": "CMWSSB2",
+        "date": "February 14, 2013",
+        "from": "Area Engineer 12, PIO, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Details of Area 12 Pumping Stations",
+        "violation": "The PIOs fail to intimate the Applicant on transfer of RTIs. We are not aware that the RTI reached Area Engineer 12, but it happened somehow."
+    }, { // 37
+        "key": "CMWSSB3",
+        "date": "February 27, 2013",
+        "from": "SE(C) - V",
+        "to": "S Alexraj",
+        "description": "Details of Koyambedu and Nesapakkam Sewage Treatment Plant",
+        "violation": ""
+    }, { // 38
+        "key": "CMWSSB4",
+        "date": "March 4, 2013",
+        "from": "S Alexraj",
+        "to": "The Secretary Cum General Manager",
+        "description": " * on Staff Manager for escaping from providing information <br/> * on AE 12 and SE(C) V for Incomplete Information",
+        "violation": ""
+    }, { // 39
+        "key": "CMWSSB5",
+        "date": "March 7, 2013",
+        "from": "Executive Engineer (STP/P)",
+        "to": "S Alexraj",
+        "description": " * Details of Perungudi Sewage Treatment Plant<br/> * No complaints received on pollution in Adyar and Cooum rivers",
+        "violation": ""
+    }, { // 40
+        "key": "CMWSSB6",
+        "date": "March 12, 2013",
+        "from": "S Alexraj",
+        "to": "SAO, FAA, CMWSSB",
+        "description": "on AE 12, CMWSSB for Incomplete Information",
+        "violation": ""
+    }, { // 41
+        "key": "CMWSSB7",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on SE (STP), CMWSSB for deemed denial",
+        "violation": "<b class=’redHighlight’>Perfect violation of Section 6(3) and 7(1) of RTI Act</b>"
+    }, { // 42
+        "key": "CMWSSB8",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on EE (Perungudi) for skipping questions",
+        "violation": ""
+    }, { // 43
+        "key": "CMWSSB9",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on SE(C) V for skipping questions",
+        "violation": ""
+    }, { // 44
+        "key": "CMWSSB10",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on SE (Coordination)",
+        "violation": "<b class=’redHighlight’>Perfect violation of Section 6(3) and 7(1) of RTI Act</b>"
+    }, { // 45
+        "key": "CMWSSB11",
+        "date": "March 22, 2013",
+        "from": "SE(C) V, PIO, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Layout diagrams of Koyambedu and Nesapakkam Sewage Treatment Plants",
+        "violation": ""
+    }, { // 46
+        "key": "CMWSSB12",
+        "date": "April 8, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on SE(C) V for not providing Blueprint / Map / Layout of Sewage System",
+        "violation": ""
+    }, { // 47
+        "key": "CMWSSB13",
+        "date": "April 8, 2013",
+        "from": "Chief Engineer, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Details of Perungudi Sewage Treatment Plant. No complaints received on pollution in Adyar and Cooum rivers",
+        "violation": ""
+    }, { // 48
+        "key": "CMWSSB14",
+        "date": "April 10, 2013",
+        "from": "Chief Engineer, CMWSSB",
+        "to": "S Alexraj",
+        "description": " * Map of drainage system is not available<br/> * Few questions forwarded to Deputy Chief Engg. PWD<br/> * Few questions forwarded to PIO, TNPCB",
+        "violation": ""
+    }, { // 49
+        "key": "CMWSSB15",
+        "date": "April 10, 2013",
+        "from": "Chief Engineer, CMWSSB",
+        "to": "S Alexraj",
+        "description": " * Details of Kodungaiyur STP<br/> * List of Pumping Stations in North Chennai",
+        "violation": ""
+    }, { // 50
+        "key": "CMWSSB16",
+        "date": "April 11, 2013",
+        "from": "Er. K. Venkateshwaralu, A.M.I.E., Deputy Chief Engineer, PWD",
+        "to": "Engineer in Chief, PWD",
+        "description": "",
+        "violation": ""
+    }, { // 51
+        "key": "CMWSSB17",
+        "date": "April 15, 2013",
+        "from": "Thiru.V.Muthaìyan, M.A., B.L., PIO,Under Secretary, PWD",
+        "to": "Deputy Chief Engg., PIO, WRD",
+        "description": "",
+        "violation": ""
+    }, { // 52
+        "key": "CMWSSB18",
+        "date": "April 15, 2013",
+        "from": "Chief Engineer, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Information already given by Chief Engineer (O&M) on 10.04.2013",
+        "violation": ""
+    }, { // 53
+        "key": "CMWSSB19",
+        "date": "April 15, 2013",
+        "from": "Executive Engineer (STP/P), CMWSSB",
+        "to": "S Alexraj",
+        "description": "Perungudi STP Layout given clearly after the First Appeal is filed",
+        "violation": ""
+    }, { // 54
+        "key": "CMWSSB20",
+        "date": "April 18, 2013",
+        "from": "Chief Engineer (C) 3, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Stated that information regarding Koyambedu and Nesapakkam Sewage Treatment Plants was already given",
+        "violation": ""
+    }, { // 55
+        "key": "CMWSSB21",
+        "date": "April 25, 2013",
+        "from": "Area Engineer 8, CMWSSB",
+        "to": "S Alexraj",
+        "description": "List of all Pumping Stations in Area 8.",
+        "violation": "No trace on who forwarded the RTI to AE 8."
+    }, { // 56
+        "key": "CMWSSB22",
+        "date": "June 24, 2013",
+        "from": "Staff Manager, CMWSSB",
+        "to": "SE I and V",
+        "description": "RTI received through TNPCB. Forwarded to sub-ordinates.",
+        "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
+
+    }, { // 57 HAFW
+        "key": "HAFW1",
+        "date": "March 14, 2013",
+        "from": "Thiru. K. Chithiraìkannu, B. Com., PIO, Under Secretary",
+        "to": "E & F, PWD, PHPM",
+        "description": "<b class=’redHighlight’>Thiru. K. Chithiraìkannu</b> very cleverly delegated the responsibility to other departments, without giving information for atleast one question.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 40  days are taken, which is <b>a clear violation of Section 6(3) </b>"
+    }, { // 58
+        "key": "HAFW2",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Special Secretary, FAA",
+        "description": "Thiru. K. Chithiraìkannu dated his letter March 14, though we received it very late after March 20. Hence, we filed a First Appeal on March 18, 2013",
+        "violation": "This is another trick that PIOs use: They send their letter in a very late date, but inside the letter a very early date is mentioned."
+    }, { // 59
+        "key": "HAFW3",
+        "date": "March 22, 2013",
+        "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
+        "to": "PIO, Deputy Chief Engineer, WRD",
+        "description": "The RTI sent to PWD is again forwarded internally within PWD",
+        "violation": ""
+    }, { // 60
+        "key": "HAFW4",
+        "date": "March 26, 2013",
+        "from": "PIO, PHPM",
+        "to": "Commissioner, CoC",
+        "description": "The RTI sent to PHPM is forwarded to Corporation Commissioner for no good reason, except for escaping.",
+        "violation": "Most PIOs points fingers at others rather than giving us the information"
+    }, { // 61
+        "key": "HAFW5",
+        "date": "April 9, 2013",
+        "from": "P. Senthilkumar, FAA, Special Secretary",
+        "to": "E&F, PWD, PHPM",
+        "description": "<b class=’redHighlight’>P. Senthilkumar</b> very cleverly delegated the responsibility to other departments, exactly as done by his PIO.",
+        "violation": "Appeal transfer is to be done within 5 days of receival of Appeal, with intimation to the Applicant. But here around 20  days are taken, which is <b>a clear violation of Section 6(3) </b>"
+    }, { // 62
+        "key": "HAFW6",
+        "date": "May 2, 2013",
+        "from": "PIO, PHPM",
+        "to": "Commissioner, CoC",
+        "description": "The PHPM PIO is very clear in his/her stand that they won’t provide us any information and again forward the Appeal to Corporation Commissioner.",
+        "violation": ""
+    }, { // 63
+        "key": "HAFW7",
+        "date": "June 19, 2013",
+        "from": "Thiru. K. Chithiraìkannu, B. Com., PIO, Under Secretary",
+        "to": "Director of Medical Education",
+        "description": "The RTI of Unknown origin is transferred to Medical Education",
+        "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
+
+    }, { // 64 PWD
+        "key": "PWD1",
+        "date": "February 6, 2013",
+        "from": "Tmt. S. Thenmozhi, MA, B.Ed., PIO, Under Secretary, H&UD",
+        "to": "PIO, PWD",
+        "description": "We initially ignored PWD and instead targeted Housing and Urban Department. But our RTI was rightly transferred to PWD by them.",
+        "violation": ""
+    }, { // 65
+        "key": "PWD2",
+        "date": "February 12, 2013",
+        "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
+        "to": "PIO, Deputy Chief Engineer, WRD",
+        "description": "RTI forwarded within PWD",
+        "violation": ""
+    }, { // 66
+        "key": "PWD3",
+        "date": "February 20, 2013",
+        "from": "Thiru. S. Selvin Soundarajan, BE, PIO, Deputy Chief Engineer, WRD",
+        "to": "PIO, Deputy Superintending Engineer, Palar Basin Circle, PWD",
+        "description": "RTI being forwarded within, once more",
+        "violation": ""
+    }, { // 67
+        "key": "PWD4",
+        "date": "March 20, 2013",
+        "from": "R. SenthilKumar, PIO, Exec Engineer, Araniyar Basin Circle, PWD",
+        "to": "Asst Exec Engg of Adyar and Cooum rivers, PWD",
+        "description": "Some Black sheep forwarded the RTI to Araniyar Basin Circle without intimating us. And this RTI was forwarded again to some other PIO in PWD",
+        "violation": ""
+    }, { // 68
+        "key": "PWD5",
+        "date": "March 28, 2013",
+        "from": "Mr. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
+        "to": "PIO, Exec Engg, Araniyar Basin Circle, PWD",
+        "description": "RTI reached this PIO without intimation to Applicant. This PIO in turn forwards to Araniyar Basin Circle",
+        "violation": ""
+    }, { // 69
+        "key": "PWD6",
+        "date": "April 4, 2013",
+        "from": "S Alexraj",
+        "to": "Joint Chief Engg, PWD",
+        "description": "on Deputy Superintending Engineer for Deemed Denial",
+        "violation": "No response after 30 days, which is a <b>violation of section 7(1) of RTI Act</b>"
+    }, { // 70
+        "key": "PWD7",
+        "date": "April 5, 2013",
+        "from": "M. Palanikumar ME, Exec Engg, Kosasthalaiyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "Acknowledgement that RTI is forwarded to another related PIO in Kosasthalaiyar Basin Division and information will be given once it is received from them",
+        "violation": ""
+    }, { // 71
+        "key": "PWD8",
+        "date": "April 10, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg. Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
+        "violation": ""
+    }, { // 72
+        "key": "PWD9",
+        "date": "April 12, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "Acknowledgement that RTI is forwarded to another related PIO in Cooum Basin Division and information will be given once it is received from them",
+        "violation": ""
+    }, { // 73
+        "key": "PWD10",
+        "date": "April 19, 2013",
+        "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
+        "to": "FAA, Chief Engg, WRD",
+        "description": "Transfer of First Appeal dated 04-04.",
+        "violation": "Appeal transfer is to be done within 5 days, with intimation to the Applicant. But here around 15 days are taken, which is <b>a clear violation </b>"
+    }, { // 74
+        "key": "PWD11",
+        "date": "April 19, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
+        "violation": ""
+    }, { // 75
+        "key": "PWD12",
+        "date": "April 25, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "Assistant Executive Engineer, PWD, Cooum Sub Division, Chepauk and Assistant Engineer, PWD, Cooum River Section 3 are responsible for maintenance of monitory of Cooum river",
+        "violation": ""
+    }, { // 76
+        "key": "PWD13",
+        "date": "April 26, 2013",
+        "from": "Krishnamoorthy Sukumar, BE, FAA, Addl Chief Engg, PWD",
+        "to": "PIO, Deputy Superintending Engg, Palar Basin Circle, PWD",
+        "description": "Transfer of First Appeal dated April 4, 2013.",
+        "violation": "Appeal transfer is to be done within 5 days, with intimation to the Applicant. But here around 20 days are taken, which is <b>a clear violation </b>"
+    }, { // 77
+        "key": "PWD14",
+        "date": "April 29, 2013",
+        "from": "M. Palanikumar ME, Exec Engg, Kosasthalaiyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "Territorial Jurisdictions of Adyar and Cooum rivers are given",
+        "violation": ""
+    }, { // 78
+        "key": "PWD15",
+        "date": "May 3, 2013",
+        "from": "Mr. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
+        "to": "Exec Engg, Araniyar Basin Division, PWD",
+        "description": "for RTI forwarded from E & F on March 28, 2013 and April 15, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 35 days are taken, which is <b class=’redHighlight’>a clear violation of Section 6(3), </b>"
+    }, { // 79
+        "key": "PWD16",
+        "date": "May 6, 2013",
+        "from": "P. Suprent BE, PIO, Exec Engg, WRD",
+        "to": "PIO, Deputy Chief Engg, , PWD",
+        "description": "The RTI of Unknown origin is transferred within PWD",
+        "violation": ""
+    }, { // 80
+        "key": "PWD17",
+        "date": "May 15, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "Addl. Exec Engg, Cooum Basin Circle, PWD",
+        "description": "",
+        "violation": "RTI Transfer being made after 10 days, <b class=’redHighlight’>’a violation of Section 6(3)</b>, which requires the transfer to be done within 5 days"
+    }, { // 81
+        "key": "PWD18",
+        "date": "May 30, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin, PWD",
+        "to": "S Alexraj",
+        "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
+        "violation": ""
+    }, { // 82
+        "key": "PWD19",
+        "date": "June 4, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin, PWD",
+        "to": "Addl. Exec Engg, Cooum Basin Circle, PWD",
+        "description": "Transfer of RTI received on May 6, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 30 days are taken, which is <b class=’redHighlight’>a clear violation of Section 6(3), </b>"
+    }, { // 83
+        "key": "PWD20",
+        "date": "June 6, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "for Appeal forwarded on April 26, 2013",
+        "violation": ""
+    }, { // 84
+        "key": "PWD21",
+        "date": "June 11, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "actions like lodging police complainant against the defaulters, filing cases against the industrial / commercial entities will be taken.",
+        "violation": ""
+    }, { // 85
+        "key": "PWD22",
+        "date": "June 25, 2013",
+        "from": "A Pragadeeswaran ME, PIO, Exec Engg, WRD, PWD",
+        "to": "PIO, Deputy Chief Engg, PWD",
+        "description": "The RTI of Unknown origin is transferred within PWD.",
+        "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
+
+    }, { // 86 E & F
+        "key": "EAF1",
+        "date": "February 15, 2013",
+        "from": "Thiru V Sugumaran, MA., LLB., PIO, Under Secretary",
+        "to": "TNPCB, Director of Environment",
+        "description": "Thiru V Sugumaran, Under Secretary delegated the responsibility to other departments, without giving information for atleast one question.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 15 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 87 
+        "key": "EAF2",
+        "date": "February 20, 2013",
+        "from": "Thiru V Sugumaran, MA., LLB., PIO, Under Secretary",
+        "to": "PIO, Department of Environment; PIO, TNPCB; S Alexraj",
+        "description": " * National River Conservation Programme supported by National River Conservation Directorate (NRCD) lMoEF is implemented by Department of Environment through Environment Management Agency of Tamil Nadu (EMAT), the Tamil Nadu Water Supply and Drainage Board (TWAD) and Chennai Metropolitan Water Supply and Sewerage Board (CMWSSB) <br/> * 7 petitions has been received in written and forwarded to TNPCB, regarding water pollution in 2012-2013 <br/> * many questions forwarded to TNPCB and DoE",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 20 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 88 
+        "key": "EAF3",
+        "date": "February 22, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer",
+        "description": "RTI received through E & F, being transferred within TNPCB",
+        "violation": ""
+    }, { // 89 
+        "key": "EAF4",
+        "date": "March 25, 2013",
+        "from": "Thiru A. Sugavanam, MA., BL., PIO, Under Secretary",
+        "to": "PIO, Director of Environment",
+        "description": "Thiru V Sugumaran, Under Secretary again transfers the RTI as he already did on February 15 for no reason.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 45 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 90 
+        "key": "EAF5",
+        "date": "March 28, 2013",
+        "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
+        "to": "PWD; WRD; TWAD",
+        "description": " * E & F didn’t implement any schemes to cleanup Adyar and Cooum rivers.<br/> * Transfer of RTI received on February 20, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 35 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 91 
+        "key": "EAF6",
+        "date": "April 4, 2013",
+        "from": "S Alexraj",
+        "to": "Additional Director, FAA",
+        "description": "on Director of Environment for Deemed Denial of RTI transferred in a letter dated February, 20, 2013",
+        "violation": "No response after 30 days, which is a <b>violation of section 7(1) of RTI Act</b>"
+    }, { // 92 
+        "key": "EAF7",
+        "date": "April 15, 2013",
+        "from": "P. Suprent BE, PIO, Exec Engg, WRD",
+        "to": "PIO, Deputy Chief Engg, PWD",
+        "description": "RTI transfer within WRD, PWD for RTI received from E&F in a letter dated March 28, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 18 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 93 
+        "key": "EAF8",
+        "date": "April 26, 2013",
+        "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
+        "to": "CoC; PWD",
+        "description": "Transfer of RTI received on March 25, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 30 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 94 
+        "key": "EAF9",
+        "date": "April 26, 2013",
+        "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
+        "to": "S Alexraj",
+        "description": "Information already given in a letter dated March 28, 2013",
+        "violation": ""
+
+    }, { // 95 MAWS
+        "key": "MAWS6",
+        "date": "February 24, 2014",
+        "from": "Tamil Nadu Information Commission",
+        "to": "S Alexraj and PIOs from MAWS, CMWSSB, CRRT, CoC and PWD",
+        "description": "All the PIOs, especially MAWS PIO was flamed like nothing by the Information Commissioner and another hearing with the PIOs were planned and all PIOs are instructed to provide all required information within 15 days.",
+        "violation": ""
+    }, { // 96 MAWS
+        "key": "MAWS7",
+        "date": "March 3, 2014",
+        "from": "CMWSSB",
+        "to": "S Alexraj",
+        "description": "105 sewage outfalls in Cooum river and 49 sewage outfalls in Adyar river were identified. Work being carried over to fix those outfalls",
+        "violation": ""
+    }, { // 97 MAWS
+        "key": "MAWS8",
+        "date": "March 13, 2014",
+        "from": "PWD",
+        "to": "WRD",
+        "description": "PWD forwarding the RTI to WRD, for the Order received from TNIC. So its obvious that transferring of RTIs is done not only to the plea of a Common Man, but also to the order of the Information Commissioner.",
+        "violation": ""
+    }, { // 98 MAWS
+        "key": "MAWS9",
+        "date": "March 14, 2014",
+        "from": "CRRT",
+        "to": "S Alexraj",
+        "description": "126.51 Lakhs spent in the year 2012 - 2013 to renunciate a small part of 58 Acres in Adyar river",
+        "violation": ""
+    }, { // 99 MAWS
+        "key": "MAWS10",
+        "date": "March 19, 2014",
+        "from": "Public Health Department, CoC",
+        "to": "S Alexraj",
+        "description": "Irrelevant Information",
+        "violation": ""
+    }, { // 100 MAWS
+        "key": "MAWS11",
+        "date": "March 07, 2014",
+        "from": "MAWS",
+        "to": "S Alexraj",
+        "description": "<b class=’positiveColor’>Finally we got all required information from MAWS, including the Budget Spent and many more details.</b>",
+        "violation": ""
+    }, { // 101 Complaint
+        "key": "Complaint",
+        "date": "February 05, 2013",
+        "from": "S Alexraj",
+        "to": "CM Special Cell, MDWS, CoC, CMWSSB, TNPCB, E&F, H&FW, MAWS, H&U, CPCB",
+        "description": "Big LONG Complaint requesting to cleanup Adyar and Cooum rivers and properly maintain them",
+        "violation": ""
+    }, { // 102 RTI TNPCB
+        "key": "RTI1",
+        "date": "February 01, 2013",
+        "from": "S Alexraj",
+        "to": "Tamil Nadu Pollution Control Board",
+        "description": "Enquiring the details of the authorities responsible for maintenance of the rivers, budget spend on maintenance and monitoring of the rivers and much more about the rivers",
+        "violation": ""
+    }, { // 103 RTI MAWS
+        "key": "RTI2",
+        "date": "February 01, 2013",
+        "from": "S Alexraj",
+        "to": "Municipal Administration and Water Supply",
+        "description": "Enquiring the details of the authorities responsible for maintenance of the rivers, budget spend on maintenance and monitoring of the rivers and much more about the rivers",
+        "violation": ""
+    }, { // 104 RTI CoC
+        "key": "RTI3",
+        "date": "February 01, 2013",
+        "from": "S Alexraj",
+        "to": "Corporation of Chennai",
+        "description": "Enquiring the details of the authorities responsible for maintenance of the rivers, budget spend on maintenance and monitoring of the rivers and much more about the rivers",
+        "violation": ""
+    }, { // 105 RTI E&F
+        "key": "RTI4",
+        "date": "February 01, 2013",
+        "from": "S Alexraj",
+        "to": "Environment and Forest Department",
+        "description": "Enquiring the details of the authorities responsible for maintenance of the rivers, budget spend on maintenance and monitoring of the rivers and much more about the rivers",
+        "violation": ""
+    }, { // 106 RTI PWD
+        "key": "RTI5",
+        "date": "February 01, 2013",
+        "from": "S Alexraj",
+        "to": "Housing and Urban Development, which is then forwarded to Public Works Department",
+        "description": "Enquiring the details of the authorities responsible for maintenance of the rivers, budget spend on maintenance and monitoring of the rivers and much more about the rivers",
+        "violation": ""
+    }, { // 107 RTI H&FW
+        "key": "RTI6",
+        "date": "February 01, 2013",
+        "from": "S Alexraj",
+        "to": "Health and Family Welfare",
+        "description": "Enquiring the details of the authorities responsible for maintenance of the rivers, budget spend on maintenance and monitoring of the rivers and much more about the rivers",
+        "violation": ""
+    }, { // 108 RTI CMWSSB
+        "key": "RTI7",
+        "date": "February 01, 2013",
+        "from": "S Alexraj",
+        "to": "Chennai Metro Water and Sewage Supply Board",
+        "description": "Enquiring the details of the authorities responsible for maintenance of the rivers, budget spend on maintenance and monitoring of the rivers and much more about the rivers",
+        "violation": ""
+    }, { // 109 RTI CPCB
+        "key": "RTI8",
+        "date": "February 01, 2013",
+        "from": "S Alexraj",
+        "to": "Central Pollution Control Board",
+        "description": "Enquiring the details of the authorities responsible for maintenance of the rivers, budget spend on maintenance and monitoring of the rivers and much more about the rivers",
+        "violation": ""
+    }];
+
+var violationArray = [];
+
+    for (var i = 0; i < rawData.length; i++) {
+        rawData[i]["toolTip"] = "<b>" + rawData[i].date + "</b><hr/>" +
+            "<b>From: </b>" + rawData[i].from + "<hr/>" + 
+            "<b>To: </b>" + rawData[i].to;
+            if (rawData[i].description.length != 0) {
+                rawData[i]["toolTip"] += "<hr/><b>Description: </b>" + rawData[i].description; 
+            }
+            if (rawData[i].violation.length != 0 && rawData[i] != 'S Alexraj') {
+                rawData[i]["toolTip"] += "<hr/><b>Violation: </b>" + rawData[i].violation; 
+                violationArray.push({"id": i, "key": rawData[i]["key"], "message": rawData[i].from + " : " + rawData[i].violation});
+            }
+    }
+
+    rawData.push({"key": "CoC1a", "toolTip": rawData[0].toolTip});
+    rawData.push({"key": "CoC1b", "toolTip": rawData[0].toolTip});
+    rawData.push({"key": "CoC1c", "toolTip": rawData[0].toolTip});
+    rawData.push({"key": "MAWS1a", "toolTip": rawData[8].toolTip});
+    rawData.push({"key": "TNPCB5a", "toolTip": rawData[17].toolTip});
+    rawData.push({"key": "TNPCB7a", "toolTip": rawData[19].toolTip});
+    rawData.push({"key": "TNPCB12a", "toolTip": rawData[24].toolTip});
+    rawData.push({"key": "TNPCB12b", "toolTip": rawData[24].toolTip});
+    rawData.push({"key": "CPCB1a", "toolTip": rawData[29].toolTip});
+    rawData.push({"key": "CPCB3a", "toolTip": rawData[31].toolTip});
+    rawData.push({"key": "CPCB4a", "toolTip": rawData[32].toolTip});
+    rawData.push({"key": "CPCB6a", "toolTip": rawData[34].toolTip});
+    rawData.push({"key": "CMWSSB1a", "toolTip": rawData[36].toolTip});
+    rawData.push({"key": "CMWSSB1b", "toolTip": rawData[36].toolTip});
+    rawData.push({"key": "CMWSSB14a", "toolTip": rawData[49].toolTip});
+    rawData.push({"key": "HAFW1a", "toolTip": rawData[58].toolTip});
+    rawData.push({"key": "HAFW1b", "toolTip": rawData[58].toolTip});
+    rawData.push({"key": "HAFW1c", "toolTip": rawData[58].toolTip});
+    rawData.push({"key": "HAFW4a", "toolTip": rawData[61].toolTip});
+    rawData.push({"key": "HAFW5a", "toolTip": rawData[62].toolTip});
+    rawData.push({"key": "HAFW5b", "toolTip": rawData[62].toolTip});
+    rawData.push({"key": "HAFW5c", "toolTip": rawData[62].toolTip});
+    rawData.push({"key": "HAFW6a", "toolTip": rawData[63].toolTip});
+    rawData.push({"key": "EAF1a", "toolTip": rawData[87].toolTip});
+    rawData.push({"key": "EAF2a", "toolTip": rawData[88].toolTip});
+    rawData.push({"key": "EAF5a", "toolTip": rawData[91].toolTip});
+    rawData.push({"key": "EAF8a", "toolTip": rawData[94].toolTip});
+
+
+
+
+$("#selMap").load(function() {
+    console.log("One image loaded");
+    resourceCount++;
+    if (resourceCount == 2) {
+        initImageMapster();
+    }
+});
+
+$("#imgMap").load(function() {
+    console.log("One image loaded");
+    resourceCount++;
+    if (resourceCount == 2) {
+        initImageMapster();
+    }
+});
+
+function initImageMapster() {
+    console.log("Mapster Init " + $(document).height());
+    console.log("Mapster Init " + $(window).height());
+
+    $('html, body').animate({scrollTop: ($(document).height() - $(window).height()) * 0.5}, 1000);
+    $('html, body').animate({scrollLeft: ($(document).width() - $(window).width()) * 0.5}, 1000);
+
+    $('#imgMap').mapster({
+        showToolTip: true,
+        altImage: 'selected.jpg',
+        mapKey: 'data-key',
+        toolTipContainer: '<div style="width: 25%; min-width: 200px; border: 1px solid #ee0000; background: #FFFFFF; font-family:Arial; font-size: 0.8em; position:absolute; padding:4px; margin: 4px; -moz-box-shadow: 0px 0px 7px #cc5511; -webkit-box-shadow: 0px 0px 7px #cc5511; box-shadow: 0px 0px 7px #cc5511; -moz-border-radius: 6px 6px 6px 6px; -webkit-border-radius: 6px; border-radius: 6px 6px 6px 6px; opacity: 0.9;"></div>',
+        areas: rawData,
+        //toolTipClose: 'area-click',
+        clickNavigate: true,
+        configTimeout: 10000,
+        scaleMap: true,
+        //mouseoutDelay: 1000,
+        stroke: true,
+        render_highlight: {
+            strokeWidth: 2
+        },
+        onShowToolTip: function(e) {
+            var rect = $("area[data-key='" + e.key + "']").attr("coords").split(',');
+            e.toolTip.css({ left: rect[0] + 'px', top: rect[3] + 'px' });
+        }
+    });
+    timerID = window.setInterval(cycleMessage, 5000);
+    console.log(rawData);
+
+}
+
+function onToolTip(e) {
+
+}   
+
+function cycleMessage() {
+    var rnd = Math.floor(Math.random() * violationArray.length);
+    currentViolation = violationArray[rnd];
+    $("#notificationArea").html(currentViolation.message);
+}
+
+$("#zoomInButton").click(function() {
+    
+    console.log("zoom in");
+});
+
+$("#zoomOutButton").click(function() {
+    console.log("zoom Out");
+});
+
+$("#notificationArea").mouseover(function() {
+    var key = currentViolation["key"];
+    if (key) {
+        console.log("notification bar " + key);
+        $('#imgMap').mapster('highlight',false);
+        $('#imgMap').mapster('tooltip',key);
+        $('#imgMap').mapster('highlight', key);
+        var rect = $("area[data-key='" + key + "']").attr("coords").split(',');
+        $('html, body').animate({
+            scrollTop: rect[1],
+            scrollLeft: rect[0]
+        }, 500);
+    }
+});
+
+$("#notificationArea").mouseover(function() {
+    window.clearInterval(timerID);
+});
+
+$("#notificationArea").mouseout(function() {
+    timerID = window.setInterval(cycleMessage, 5000);
+});
+
+$("#leftArrowButton").click(function() {
+    cycleMessage();
+});
+
+$("#rightArrowButton").click(function() {
+    cycleMessage();
+});
+
+$("#fullScreenButton").click(function() {
+    console.log($("#fullScreenButton").attr('checked'));
+    if($("#fullScreenButton").attr('checked') === "checked") {
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+});
+
+$("#legendTitle").click(function() {
+    console.log( $("#legendBar").height() );
+    if ( $("#legendBar").height() == 20 ) {
+        $("#legendBar").animate({height: 420}, 250);
+        $("#legendTitle").text("HIDE TIPS");
+    } else {
+        $("#legendBar").animate({height: 20}, 250);
+        $("#legendTitle").text("SHOW TIPS");
+    }
+});
+
+        </script>
+
+    </body>
+
+</html>
